@@ -8,29 +8,24 @@ use PulkitJalan\Cacheable\Eloquent\Builder;
 trait Cacheable
 {
     /**
-     * Register any other events for your application.
+     * The "booting" method of the model.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
-    public function boot(DispatcherContract $events)
+    public static function boot()
     {
-        parent::boot($events);
+        parent::boot();
 
         static::updated(function ($model) {
-            Cache::tag($this->getTable())->forget($model->{$model->getKeyName()});
+            Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
         }, -1);
 
         static::saved(function ($model) {
-            Cache::tag($this->getTable())->forget($model->{$model->getKeyName()});
+            Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
         }, -1);
 
         static::deleted(function ($model) {
-            Cache::tag($this->getTable())->forget($model->{$model->getKeyName()});
-        }, -1);
-
-        static::restored(function ($model) {
-            Cache::tag($this->getTable())->forget($model->{$model->getKeyName()});
+            Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
         }, -1);
     }
 
