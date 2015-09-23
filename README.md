@@ -18,7 +18,7 @@ Install via [composer](https://getcomposer.org/) - edit your `composer.json` to 
 
 ```js
 "require": {
-    "pulkitjalan/cacheable": "dev-master"
+    "pulkitjalan/cacheable": "0.1.*"
 }
 ```
 
