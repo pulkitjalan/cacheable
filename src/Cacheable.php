@@ -8,6 +8,13 @@ use PulkitJalan\Cacheable\Eloquent\Builder;
 trait Cacheable
 {
     /**
+     * Set the cache expiry time.
+     *
+     * @var int
+     */
+    public $cacheExpiry = 1440;
+
+    /**
      * The "booting" method of the model.
      *
      * @return void

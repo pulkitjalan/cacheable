@@ -50,3 +50,27 @@ class Model extends \Eloquent
 Caching the model only works with using the `find`, `findMany` or `findOrFail` methods.
 
 If you would like caching behavior like in Laravel 4 then consider using [dwightwatson/rememberable](https://github.com/dwightwatson/rememberable) which adds the `remember` function back into eloquent.
+
+You can optinally set the expiry time in minutes for the model, by default it is set to `1440` minutes (24 hours).
+
+```php
+<?php
+
+namespace App;
+
+use PulkitJalan\Cacheable\Cacheable;
+
+class Model extends \Eloquent
+{
+    use Cacheable;
+
+    /**
+     * Set the cache expiry time.
+     *
+     * @var int
+     */
+    public $cacheExpiry = 60;
+}
+```
+
+Models are cached using the models `table name` as the cache tag and the `id` as the key. There are observers which get registered in the trait to also remove from cache when the `updated`, `saved` or `deleted`.
