@@ -1,4 +1,4 @@
-Cachable
+Cacheable
 =========
 
 > Automatically cache Eloquent models using the `find` methods
@@ -32,18 +32,18 @@ PulkitJalan\Cache\Providers\MultiCacheServiceProvider::class
 
 ## Usage
 
-Simply use the `Cachable` trait in any model you want to be cache automatically.
+Simply use the `Cacheable` trait in any model you want to be cache automatically.
 
 ```php
 <?php
 
 namespace App;
 
-use PulkitJalan\Cachable\Cachable;
+use PulkitJalan\Cacheable\Cacheable;
 
 class Model extends \Eloquent
 {
-    use Cachable;
+    use Cacheable;
 }
 ```
 
