@@ -23,10 +23,6 @@ trait Cacheable
     {
         parent::boot();
 
-        static::updated(function ($model) {
-            Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
-        }, -1);
-
         static::saved(function ($model) {
             Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
         }, -1);

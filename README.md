@@ -73,4 +73,4 @@ class Model extends \Eloquent
 }
 ```
 
-Models are cached using the models `table name` as the cache tag and the `id` as the key. There are observers which get registered in the trait to also remove from cache when the `updated`, `saved` or `deleted`.
+Models are cached using the models `table name` as the cache tag and the `id` as the key. There are observers which get registered in the trait to also remove from cache when the `saved` or `deleted`.
