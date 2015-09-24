@@ -21,7 +21,7 @@ class Builder extends IlluminateBuilder
             return $this->findMany($id, $columns);
         }
 
-        return Cache::tags([$this->model->getTable(), md5($this->query->toSql())])->remember(
+        return Cache::tags($this->model->getTable())->remember(
             $id,
             $this->model->cacheExpiry,
             function () use ($id, $columns) {
@@ -44,7 +44,7 @@ class Builder extends IlluminateBuilder
         }
 
         return $this->model->newCollection(
-            Cache::tags([$this->model->getTable(), md5($this->query->toSql())])->rememberMany(
+            Cache::tags($this->model->getTable())->rememberMany(
                 $ids,
                 $this->model->cacheExpiry,
                 function ($ids) use ($columns) {
