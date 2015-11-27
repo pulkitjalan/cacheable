@@ -69,10 +69,10 @@ class Builder extends IlluminateBuilder
      */
     protected function isBasicQuery()
     {
-        $freshQuery = $this->getQuery()
+        $freshQuery = $this->query
             ->newQuery()
-            ->from($this->getModel()->getTable());
+            ->from($this->model->getTable());
 
-        return $this->getQuery() == $freshQuery;
+        return $this->query == $freshQuery;
     }
 }
