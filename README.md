@@ -1,7 +1,7 @@
 Cacheable
 =========
 
-> Automatically cache Eloquent models using the `find` methods
+> Automatically cache basic Eloquent models using the `find` methods
 
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://www.opensource.org/licenses/MIT)
 [![Latest Version](http://img.shields.io/packagist/v/pulkitjalan/cacheable.svg?style=flat-square)](https://packagist.org/packages/pulkitjalan/cacheable)
@@ -39,9 +39,10 @@ Simply use the `Cacheable` trait in any model you want to be cache automatically
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use PulkitJalan\Cacheable\Cacheable;
 
-class Model extends \Eloquent
+class CachedModel extends Model
 {
     use Cacheable;
 }
@@ -58,9 +59,10 @@ You can optinally set the expiry time in minutes for the model, by default it is
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use PulkitJalan\Cacheable\Cacheable;
 
-class Model extends \Eloquent
+class CachedModel extends Model
 {
     use Cacheable;
 
@@ -74,3 +76,13 @@ class Model extends \Eloquent
 ```
 
 Models are cached using the models `table name` as the cache tag and the `id` as the key. There are observers which get registered in the trait to also remove from cache when the `saved` or `deleted`.
+
+Caching is only applied to basic models (ones without any conditions added).
+
+```php
+// cached
+CachedModel::find(1);
+
+// not cached
+CachedModel::where('some_field', 1)->find(1);
+```

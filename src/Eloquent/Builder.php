@@ -17,6 +17,10 @@ class Builder extends IlluminateBuilder
      */
     public function find($id, $columns = ['*'])
     {
+        if (! $this->isBasicQuery()) {
+            return parent::find($id, $columns);
+        }
+
         if (is_array($id)) {
             return $this->findMany($id, $columns);
         }
@@ -39,6 +43,10 @@ class Builder extends IlluminateBuilder
      */
     public function findMany($ids, $columns = ['*'])
     {
+        if (! $this->isBasicQuery()) {
+            return parent::findMany($ids, $columns);
+        }
+
         if (empty($ids)) {
             return $this->model->newCollection();
         }
@@ -52,5 +60,20 @@ class Builder extends IlluminateBuilder
                 }
             )
         );
+    }
+
+    /**
+     * Check if the current query is
+     * a basic query or has had some
+     * conditions (where, joins, etc)
+     * attached to it.
+     * 
+     * @return boolean
+     */
+    protected function isBasicQuery()
+    {
+        $freshQuery = $this->queue->newQuery();
+
+        return $this->query == $freshQuery;
     }
 }
