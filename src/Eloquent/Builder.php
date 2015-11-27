@@ -3,7 +3,6 @@
 namespace PulkitJalan\Cacheable\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder as IlluminateBuilder;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 
 class Builder extends IlluminateBuilder
@@ -63,10 +62,8 @@ class Builder extends IlluminateBuilder
     }
 
     /**
-     * Check if the current query is
-     * a basic query or has had some
-     * conditions (where, joins, etc)
-     * attached to it.
+     * Check if the current query is a basic query or has had some
+     * conditions (where, joins, etc) attached to it.
      * 
      * @return boolean
      */

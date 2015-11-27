@@ -50,7 +50,7 @@ class CachedModel extends Model
 
 Caching the model only works with using the `find`, `findMany` or `findOrFail` methods.
 
-If you would like caching behavior like in Laravel 4 then consider using [dwightwatson/rememberable](https://github.com/dwightwatson/rememberable) which adds the `remember` function back into eloquent.
+If you would like caching behavior like in Laravel 4 then consider using [dwightwatson/rememberable](https://github.com/dwightwatson/rememberable) which adds the `remember` function back into eloquent. Both packages can be used together also.
 
 You can optinally set the expiry time in minutes for the model, by default it is set to `1440` minutes (24 hours).
 
