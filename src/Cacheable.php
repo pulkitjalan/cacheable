@@ -24,11 +24,11 @@ trait Cacheable
         parent::boot();
 
         static::saved(function ($model) {
-            Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
+            $model->refresh();
         }, -1);
 
         static::deleted(function ($model) {
-            Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
+            $model->refresh();
         }, -1);
     }
 
@@ -41,5 +41,17 @@ trait Cacheable
     public function newEloquentBuilder($query)
     {
         return new Builder($query);
+    }
+
+    /**
+     * Refresh the current models cache.
+     *
+     * @return $this
+     */
+    public function refresh()
+    {
+        Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
+
+        return $this;
     }
 }

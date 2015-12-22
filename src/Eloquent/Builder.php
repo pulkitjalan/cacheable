@@ -73,6 +73,6 @@ class Builder extends IlluminateBuilder
             ->newQuery()
             ->from($this->model->getTable());
 
-        return $this->query == $freshQuery;
+        return $this->query == $freshQuery && empty($this->eagerLoad);
     }
 }

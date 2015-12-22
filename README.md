@@ -85,4 +85,7 @@ CachedModel::find(1);
 
 // not cached
 CachedModel::where('some_field', 1)->find(1);
+
+// not cached
+CachedModel::with('relation')->find(1);
 ```
