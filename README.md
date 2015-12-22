@@ -89,3 +89,10 @@ CachedModel::where('some_field', 1)->find(1);
 // not cached
 CachedModel::with('relation')->find(1);
 ```
+
+The cache can be manually cleared by calling the new `refresh` method on the cached model which can be found in the `Cacheable` trait.
+
+```php
+// manually clear cache
+CachedModel::find(1)->refresh();
+```
