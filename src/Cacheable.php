@@ -50,7 +50,7 @@ trait Cacheable
      */
     public function refresh()
     {
-        Cache::tags($model->getTable())->forget($model->{$model->getKeyName()});
+        Cache::tags($this->getTable())->forget($this->{$this->getKeyName()});
 
         return $this;
     }
