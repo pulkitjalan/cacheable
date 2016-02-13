@@ -12,7 +12,7 @@
     "require": {
         "php": ">=5.5.9",
         "illuminate/database": "~5.1",
-        "pulkitjalan/multicache": "dev-master"
+        "pulkitjalan/multicache": "0.3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
