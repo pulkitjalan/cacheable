@@ -14,15 +14,10 @@ Cacheable
 
 ## Installation
 
-Install via [composer](https://getcomposer.org/) - edit your `composer.json` to require the package.
-
-```js
-"require": {
-    "pulkitjalan/cacheable": "0.1.*"
-}
+Install via [composer](https://getcomposer.org/) - In the terminal
 ```
-
-Then run `composer update` in your terminal to pull it in.
+composer require pulkitjalan/cacheable
+```
 
 This package makes use of [pulkitjalan\multicache](https://github.com/pulkitjalan/multicache) which requires a service provider to be registered. So add the following to the `providers` array in your `config/app.php`
 
